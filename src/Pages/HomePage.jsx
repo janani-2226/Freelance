@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ArrowUpRight, Sparkles, Zap, Brain, Layers, Globe, Star, Circle, Triangle, Square, Award, Users, TrendingUp, Mail, Github, Linkedin, Twitter, Send, Download, Play } from 'lucide-react';
 
-export default function UniquePortfolio() {
+export default function Homepage() {
+  const navigate = useNavigate();
   const [scrollY, setScrollY] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [cursorVariant, setCursorVariant] = useState('default');
@@ -35,7 +37,6 @@ export default function UniquePortfolio() {
       ];
       setCursorTrail([...cursorTrailRef.current]);
 
-      // Random particle generation
       if (Math.random() > 0.95) {
         const newParticle = {
           x: e.clientX + (Math.random() - 0.5) * 100,
@@ -76,27 +77,6 @@ export default function UniquePortfolio() {
       section.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
-
-  const expertise = [
-    {
-      icon: <Brain className="w-8 h-8" />,
-      title: "AI Strategy",
-      areas: ["Machine Learning", "Neural Networks", "GPT Integration", "Model Training"],
-      shape: <Circle className="w-full h-full" />
-    },
-    {
-      icon: <Zap className="w-8 h-8" />,
-      title: "Creative Tech",
-      areas: ["WebGL/Three.js", "Motion Design", "Interactive Art", "Generative UI"],
-      shape: <Triangle className="w-full h-full" />
-    },
-    {
-      icon: <Layers className="w-8 h-8" />,
-      title: "System Design",
-      areas: ["Microservices", "Cloud Native", "Real-time Data", "GraphQL APIs"],
-      shape: <Square className="w-full h-full" />
-    }
-  ];
 
   const showcase = [
     {
@@ -152,18 +132,10 @@ export default function UniquePortfolio() {
     }
   ];
 
-  const stats = [
-    { value: "500+", label: "Projects Completed" },
-    { value: "50+", label: "Team Members" },
-    { value: "98%", label: "Client Satisfaction" },
-    { value: "15+", label: "Countries Served" }
-  ];
-
   return (
     <div className="bg-white text-gray-900 overflow-x-hidden relative min-h-screen">
       {/* Advanced Cursor */}
       <div className="fixed inset-0 pointer-events-none z-[9999]">
-        {/* Cursor Trail */}
         {cursorTrail.map((point, index) => (
           <div
             key={point.id}
@@ -184,7 +156,6 @@ export default function UniquePortfolio() {
           </div>
         ))}
 
-        {/* Particles */}
         {particles.map((particle) => (
           <div
             key={particle.id}
@@ -196,7 +167,6 @@ export default function UniquePortfolio() {
           />
         ))}
 
-        {/* Main Cursor */}
         <div
           className="absolute transition-all duration-150 ease-out"
           style={{
@@ -211,7 +181,6 @@ export default function UniquePortfolio() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-gray-900 rounded-full" />
         </div>
 
-        {/* Ripples */}
         {ripples.map((ripple) => (
           <div
             key={ripple.id}
@@ -298,15 +267,6 @@ export default function UniquePortfolio() {
               </button>
             ))}
           </nav>
-
-          {/* <button
-            onClick={() => scrollToSection('contact')}
-            className="text-sm font-medium tracking-wide text-gray-600 hover:text-blue-600 transition-colors"
-            onMouseEnter={() => setCursorVariant('hover')}
-            onMouseLeave={() => setCursorVariant('default')}
-          >
-            Contact
-          </button> */}
         </div>
       </header>
 
@@ -328,7 +288,7 @@ export default function UniquePortfolio() {
           </h1>
 
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed font-display font-light">
-            Full-stack engineer specializing in AI integration, creative technology, and pushing the boundaries of what's possible on the web.
+            A collective of elite freelancers specializing in AI integration, creative technology, and custom solutions. We handle complex projects end-to-end from vision to flawless execution. Your dream project deserves a team that can deliver it.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -339,7 +299,7 @@ export default function UniquePortfolio() {
               onMouseLeave={() => setCursorVariant('default')}
             >
               <span className="relative text-white font-display font-medium tracking-wide flex items-center gap-3">
-                View Selected Work
+                Start Your Project
                 <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
               </span>
             </button>
@@ -350,11 +310,10 @@ export default function UniquePortfolio() {
               onMouseEnter={() => setCursorVariant('hover')}
               onMouseLeave={() => setCursorVariant('default')}
             >
-              Read Manifesto
+              View our Projects
             </button>
           </div>
 
-          {/* Floating Metrics */}
           <div className="grid grid-cols-3 gap-6 mt-20 max-w-3xl mx-auto">
             {[
               { value: "8+", label: "Years Shipping" },
@@ -375,7 +334,6 @@ export default function UniquePortfolio() {
       {/* About Us Section */}
       <section id="about-us" className="py-32 px-8 relative bg-white">
         <div className="max-w-7xl mx-auto">
-          {/* Story Section */}
           <div className="grid md:grid-cols-2 gap-12 mb-20 items-center">
             <div className="space-y-6">
               <h3 className="text-4xl font-black text-gray-900">Our Story</h3>
@@ -396,7 +354,6 @@ export default function UniquePortfolio() {
             </div>
           </div>
 
-          {/* Values */}
           <div>
             <h3 className="text-4xl font-black text-gray-900 mb-12 text-center">Our Values</h3>
             <div className="grid md:grid-cols-4 gap-6">
@@ -417,7 +374,6 @@ export default function UniquePortfolio() {
             </div>
           </div>
 
-          {/* Mission Statement */}
           <div className="mt-20 text-center max-w-4xl mx-auto p-12 bg-gradient-to-br from-blue-50 to-sky-50 rounded-3xl border-2 border-blue-100">
             <div className="mb-6 inline-flex items-center justify-center w-20 h-20 bg-blue-600 text-white rounded-full">
               <TrendingUp className="w-10 h-10" />
@@ -432,97 +388,85 @@ export default function UniquePortfolio() {
         </div>
       </section>
 
-{/* Showcase Grid */}
-<section id="works" className="py-32 px-8 relative">
-  <div className="w-full mx-auto">
-    <div
-      id="scrollContainer"
-      className="overflow-x-auto pb-8 scrollbar-hide"
-      onMouseEnter={() => {
-        // Disable body scroll when mouse enters
-        document.body.style.overflow = 'hidden';
-      }}
-      onMouseLeave={() => {
-        // Re-enable body scroll when mouse leaves
-        document.body.style.overflow = 'auto';
-      }}
-      onWheel={(e) => {
-        e.preventDefault(); // Prevent normal vertical scroll
-        const container = e.currentTarget;
-        
-        // Scroll horizontally based on wheel direction
-        // deltaY > 0 means scrolling down → scroll right
-        // deltaY < 0 means scrolling up → scroll left
-        container.scrollLeft += e.deltaY;
-      }}
-    >
-      <div className="flex gap-8 items-start">
-        
-        {/* Title - Now scrolls with content */}
-        <div className="flex-shrink-0 w-[300px] flex items-end h-[520px]">
-          <h2 className="text-5xl md:text-7xl font-display font-light text-gray-900 pb-6">
-            Case Studies
-          </h2>
-        </div>
+      {/* Showcase Grid */}
+      <section id="works" className="py-32 px-8 relative">
+        <div className="w-full mx-auto">
+        <div
+  id="scrollContainer"
+  className="overflow-x-auto pb-8 scrollbar-hide"
+  onWheel={(e) => {
+    const container = e.currentTarget;
+    const atStart = container.scrollLeft === 0;
+    const atEnd = container.scrollLeft >= container.scrollWidth - container.clientWidth;
+    
+    if ((e.deltaY > 0 && !atEnd) || (e.deltaY < 0 && !atStart)) {
+      e.preventDefault();
+      container.scrollLeft += e.deltaY;
+    }
+  }}
+>
+            <div className="flex gap-8 items-start">
+              
+              <div className="flex-shrink-0 w-[300px] flex items-end h-[520px]">
+                <h2 className="text-5xl md:text-7xl font-display font-light text-gray-900 pb-6">
+                  Our Projects
+                </h2>
+              </div>
 
-        {/* Projects */}
-        {showcase.map((project, index) => (
-          <a
-            href="#"
-            key={project.id}
-            className="group relative overflow-hidden rounded-2xl border border-gray-200 transition-all duration-300 w-[340px] h-[520px] flex-shrink-0"
-            onMouseEnter={() => setCursorVariant('hover')}
-            onMouseLeave={() => setCursorVariant('default')}
-          >
-            
-            {/* Random Online Image */}
-            <img
-              src={`https://picsum.photos/600/900?random=${index}`}
-              alt="project"
-              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
+              {showcase.map((project, index) => (
+                <button
+                  key={project.id}
+                  onClick={() => navigate(`/project/${project.id}`)}
+                  className="group relative overflow-hidden rounded-2xl border border-gray-200 transition-all duration-300 w-[340px] h-[520px] flex-shrink-0 cursor-pointer hover:border-blue-500 hover:shadow-2xl"
+                  onMouseEnter={() => setCursorVariant('hover')}
+                  onMouseLeave={() => setCursorVariant('default')}
+                >
+                  
+                  <img
+                    src={`https://picsum.photos/600/900?random=${index}`}
+                    alt={project.title}
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
 
-            {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
 
-            {/* Bottom Content */}
-            <div className="absolute bottom-0 p-6 text-white">
-              <h3 className="text-xl font-display mb-2 leading-snug">
-                {project.title}
-              </h3>
+                  <div className="absolute bottom-0 p-6 text-white">
+                    <h3 className="text-xl font-display mb-2 leading-snug">
+                      {project.title}
+                    </h3>
+                    <p className="text-sm text-gray-200">
+                      {project.desc}
+                    </p>
+                    <div className="mt-4 text-xs text-blue-300 font-semibold flex items-center gap-2">
+                      View Project
+                      <ArrowUpRight className="w-4 h-4" />
+                    </div>
+                  </div>
 
-              <p className="text-sm text-gray-200">
-                {project.desc}
-              </p>
+                </button>
+              ))}
             </div>
+          </div>
 
-          </a>
-        ))}
-      </div>
-    </div>
+          <button
+            onClick={() => {
+              document
+                .getElementById("scrollContainer")
+                .scrollBy({ left: 360, behavior: "smooth" });
+            }}
+            className="absolute right-8 top-1/2 -translate-y-1/2 bg-white border border-gray-200 shadow-md rounded-full w-12 h-12 flex items-center justify-center hover:bg-gray-50 z-10"
+          >
+            →
+          </button>
 
-    {/* Scroll Arrow */}
-    <button
-      onClick={() => {
-        document
-          .getElementById("scrollContainer")
-          .scrollBy({ left: 360, behavior: "smooth" });
-      }}
-      className="absolute right-8 top-1/2 -translate-y-1/2 bg-white border border-gray-200 shadow-md rounded-full w-12 h-12 flex items-center justify-center hover:bg-gray-50 z-10"
-    >
-      →
-    </button>
-
-  </div>
-</section>
+        </div>
+      </section>
 
       {/* Contact Section */}
       <section id="contact" className="py-20 px-8 relative bg-gradient-to-br from-gray-50 via-blue-50 to-sky-50">
         <div className="max-w-7xl mx-auto">
-          {/* Split Layout */}
           <div className="grid md:grid-cols-2 gap-12">
             
-            {/* Left Side - Content */}
             <div className="flex flex-col justify-between">
               <div>
                 <div className="inline-block mb-4 px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-xs font-semibold uppercase tracking-wider">
@@ -540,7 +484,6 @@ export default function UniquePortfolio() {
                 </p>
               </div>
 
-              {/* Quick Stats */}
               <div className="grid grid-cols-3 gap-4 mb-8">
                 {[
                   { value: "< 24h", label: "Response Time" },
@@ -554,7 +497,6 @@ export default function UniquePortfolio() {
                 ))}
               </div>
 
-              {/* Social Links */}
               <div className="flex gap-3">
                 {[
                   { icon: <Mail className="w-5 h-5" />, label: "Email", color: "bg-blue-600" },
@@ -577,12 +519,10 @@ export default function UniquePortfolio() {
               </div>
             </div>
 
-            {/* Right Side - Contact Form */}
             <div className="bg-white rounded-3xl p-8 shadow-2xl border border-gray-200 flex flex-col">
               <h3 className="text-2xl font-black mb-6 text-gray-900">Send a Message</h3>
               
               <form className="space-y-4 flex-1 flex flex-col">
-                {/* Name */}
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">Your Name</label>
                   <input
@@ -592,7 +532,6 @@ export default function UniquePortfolio() {
                   />
                 </div>
 
-                {/* Email */}
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
                   <input
@@ -602,7 +541,6 @@ export default function UniquePortfolio() {
                   />
                 </div>
 
-                {/* Project Type */}
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">Project Type</label>
                   <select className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none transition-colors">
@@ -614,7 +552,6 @@ export default function UniquePortfolio() {
                   </select>
                 </div>
 
-                {/* Message */}
                 <div className="flex-1 flex flex-col">
                   <label className="block text-sm font-semibold text-gray-700 mb-2">Message</label>
                   <textarea
@@ -623,7 +560,6 @@ export default function UniquePortfolio() {
                   ></textarea>
                 </div>
 
-                {/* Submit Button */}
                 <button
                   type="submit"
                   className="group w-full px-8 py-4 bg-blue-600 hover:bg-gray-900 transition-colors duration-500 rounded-xl font-bold text-white flex items-center justify-center gap-3"
@@ -635,7 +571,6 @@ export default function UniquePortfolio() {
                 </button>
               </form>
 
-              {/* Trust Badge */}
               <div className="mt-6 pt-6 border-t border-gray-200 flex items-center justify-center gap-2 text-sm text-gray-500">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                 <span>We'll respond within 24 hours</span>
@@ -645,7 +580,6 @@ export default function UniquePortfolio() {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="py-16 px-8 border-t-2 border-gray-200 bg-gray-50">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="text-2xl font-black text-gray-900">Σ</div>
