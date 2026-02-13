@@ -12,13 +12,13 @@ export default function Homepage() {
   const cursorTrailRef = useRef([]);
   const [cursorTrail, setCursorTrail] = useState([]);
   const [particles, setParticles] = useState([]);
-
+const whatsappNumber = '918870436538'; // Replace with your number
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
       const sections = document.querySelectorAll('section');
       const scrollPos = window.scrollY + window.innerHeight / 2;
-      
+
       sections.forEach((section, index) => {
         const top = section.offsetTop;
         const bottom = top + section.offsetHeight;
@@ -27,10 +27,10 @@ export default function Homepage() {
         }
       });
     };
-    
+
     const handleMouseMove = (e) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
-      
+
       cursorTrailRef.current = [
         { x: e.clientX, y: e.clientY, id: Date.now() },
         ...cursorTrailRef.current.slice(0, 12)
@@ -54,16 +54,16 @@ export default function Homepage() {
         id: Date.now()
       };
       setRipples(prev => [...prev, newRipple]);
-      
+
       setTimeout(() => {
         setRipples(prev => prev.filter(r => r.id !== newRipple.id));
       }, 1200);
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('click', handleClick);
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('mousemove', handleMouseMove);
@@ -146,7 +146,7 @@ export default function Homepage() {
               transform: 'translate(-50%, -50%)',
             }}
           >
-            <div 
+            <div
               className="w-3 h-3 rounded-full bg-blue-500 mix-blend-multiply"
               style={{
                 opacity: (1 - index / cursorTrail.length) * 0.3,
@@ -175,9 +175,8 @@ export default function Homepage() {
             transform: 'translate(-50%, -50%)'
           }}
         >
-          <div className={`rounded-full border-2 border-gray-900 transition-all duration-300 ${
-            cursorVariant === 'hover' ? 'w-20 h-20 border-blue-500' : 'w-12 h-12'
-          }`} />
+          <div className={`rounded-full border-2 border-gray-900 transition-all duration-300 ${cursorVariant === 'hover' ? 'w-20 h-20 border-blue-500' : 'w-12 h-12'
+            }`} />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-gray-900 rounded-full" />
         </div>
 
@@ -223,17 +222,15 @@ export default function Homepage() {
                 if (item === 'Intro') window.scrollTo({ top: 0, behavior: 'smooth' });
                 else scrollToSection(item.toLowerCase().replace(' ', '-'));
               }}
-              className={`group relative transition-all duration-300 ${
-                activeSection === index ? 'scale-125' : 'scale-100 opacity-50 hover:opacity-100'
-              }`}
+              className={`group relative transition-all duration-300 ${activeSection === index ? 'scale-125' : 'scale-100 opacity-50 hover:opacity-100'
+                }`}
               onMouseEnter={() => setCursorVariant('hover')}
               onMouseLeave={() => setCursorVariant('default')}
             >
-              <div className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                activeSection === index 
-                  ? 'bg-blue-500 shadow-lg shadow-blue-500/50' 
+              <div className={`w-2 h-2 rounded-full transition-all duration-300 ${activeSection === index
+                  ? 'bg-blue-500 shadow-lg shadow-blue-500/50'
                   : 'bg-gray-400'
-              }`} />
+                }`} />
               <span className="absolute left-6 top-1/2 -translate-y-1/2 text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap text-gray-900">
                 {item}
               </span>
@@ -245,7 +242,7 @@ export default function Homepage() {
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-40 bg-white/80 backdrop-blur-xl border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-8 py-6 flex items-center justify-between">
-          <div 
+          <div
             className="text-2xl font-black tracking-tighter text-gray-900 cursor-pointer"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             onMouseEnter={() => setCursorVariant('hover')}
@@ -253,7 +250,7 @@ export default function Homepage() {
           >
             Σ
           </div>
-          
+
           <nav className="hidden md:flex items-center gap-8">
             {['About Us', 'Works', 'Contact'].map((item) => (
               <button
@@ -391,22 +388,22 @@ export default function Homepage() {
       {/* Showcase Grid */}
       <section id="works" className="py-32 px-8 relative">
         <div className="w-full mx-auto">
-        <div
-  id="scrollContainer"
-  className="overflow-x-auto pb-8 scrollbar-hide"
-  onWheel={(e) => {
-    const container = e.currentTarget;
-    const atStart = container.scrollLeft === 0;
-    const atEnd = container.scrollLeft >= container.scrollWidth - container.clientWidth;
-    
-    if ((e.deltaY > 0 && !atEnd) || (e.deltaY < 0 && !atStart)) {
-      e.preventDefault();
-      container.scrollLeft += e.deltaY;
-    }
-  }}
->
+          <div
+            id="scrollContainer"
+            className="overflow-x-auto pb-8 scrollbar-hide"
+            onWheel={(e) => {
+              const container = e.currentTarget;
+              const atStart = container.scrollLeft === 0;
+              const atEnd = container.scrollLeft >= container.scrollWidth - container.clientWidth;
+
+              if ((e.deltaY > 0 && !atEnd) || (e.deltaY < 0 && !atStart)) {
+                e.preventDefault();
+                container.scrollLeft += e.deltaY;
+              }
+            }}
+          >
             <div className="flex gap-8 items-start">
-              
+
               <div className="flex-shrink-0 w-[300px] flex items-end h-[520px]">
                 <h2 className="text-5xl md:text-7xl font-display font-light text-gray-900 pb-6">
                   Our Projects
@@ -421,7 +418,7 @@ export default function Homepage() {
                   onMouseEnter={() => setCursorVariant('hover')}
                   onMouseLeave={() => setCursorVariant('default')}
                 >
-                  
+
                   <img
                     src={`https://picsum.photos/600/900?random=${index}`}
                     alt={project.title}
@@ -466,13 +463,13 @@ export default function Homepage() {
       <section id="contact" className="py-20 px-8 relative bg-gradient-to-br from-gray-50 via-blue-50 to-sky-50">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12">
-            
+
             <div className="flex flex-col justify-between">
               <div>
                 <div className="inline-block mb-4 px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-xs font-semibold uppercase tracking-wider">
                   Get In Touch
                 </div>
-                
+
                 <h2 className="text-5xl md:text-6xl font-black mb-4 leading-tight">
                   <span className="text-gray-900">Let's Build</span>
                   <br />
@@ -521,7 +518,7 @@ export default function Homepage() {
 
             <div className="bg-white rounded-3xl p-8 shadow-2xl border border-gray-200 flex flex-col">
               <h3 className="text-2xl font-black mb-6 text-gray-900">Send a Message</h3>
-              
+
               <form className="space-y-4 flex-1 flex flex-col">
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">Your Name</label>
@@ -561,20 +558,38 @@ export default function Homepage() {
                 </div>
 
                 <button
-                  type="submit"
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+
+                    // Get form values
+                    const name = document.querySelector('input[placeholder="John Doe"]').value;
+                    const email = document.querySelector('input[placeholder="john@example.com"]').value;
+                    const projectType = document.querySelector('select').value;
+                    const message = document.querySelector('textarea').value;
+
+                    // Create WhatsApp message
+                    const whatsappMessage = `*New Project Inquiry*%0A%0A*Name:* ${name}%0A*Email:* ${email}%0A*Project Type:* ${projectType}%0A*Message:* ${message}`;
+
+                    // Your WhatsApp number (replace with your actual number)
+                    const whatsappNumber = '918870436538'; // Replace with your number (country code + number, no spaces or +)
+
+                    // Open WhatsApp
+                    window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
+                  }}
                   className="group w-full px-8 py-4 bg-blue-600 hover:bg-gray-900 transition-colors duration-500 rounded-xl font-bold text-white flex items-center justify-center gap-3"
                   onMouseEnter={() => setCursorVariant('hover')}
                   onMouseLeave={() => setCursorVariant('default')}
                 >
-                  Send Message
+                  Send via WhatsApp
                   <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </button>
               </form>
 
-              <div className="mt-6 pt-6 border-t border-gray-200 flex items-center justify-center gap-2 text-sm text-gray-500">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                <span>We'll respond within 24 hours</span>
-              </div>
+           <div className="mt-6 pt-6 border-t border-gray-200 flex items-center justify-center gap-2 text-sm text-gray-500">
+  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+  <span>Redirects to WhatsApp for instant response</span>
+</div>
             </div>
           </div>
         </div>
@@ -583,7 +598,7 @@ export default function Homepage() {
       <footer className="py-16 px-8 border-t-2 border-gray-200 bg-gray-50">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="text-2xl font-black text-gray-900">Σ</div>
-          
+
           <div className="text-sm text-gray-500">
             © 2026 — Crafted with obsessive attention to detail
           </div>
